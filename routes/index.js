@@ -9,7 +9,7 @@ const {
   createUser,
   logout,
 } = require('../controllers/users');
-const { validationCreateUser, validationLogin } = require('../middlewares/validations');
+const { validationCreateUser, validationLogin } = require('../middlewares/validation');
 
 router.post('/signup', validationCreateUser, createUser);
 router.use(cookieParser());

@@ -30,7 +30,8 @@ const createMovie = (req, res, next) => {
     movieId,
     nameRU,
     nameEN,
-    owner: req.user._id, })
+    owner: req.user.id
+  })
     .then((movie) => res.status(201).send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -41,7 +42,7 @@ const createMovie = (req, res, next) => {
 };
 
 const getMovies = (req, res, next) => {
-  Movie.find({ owner: req.user._id })
+  Movie.find({ owner: req.user.id })
     .then((movies) => res.status(200).send(movies))
     .catch(next);
 };
@@ -54,7 +55,7 @@ const deleteMovie = (req, res, next) => {
       throw new NotFoundError('Фильм с указанным _id не найден');
     })
     .then((movie) => {
-      if (movie.owner.toString() !== req.user._id) {
+      if (movie.owner.toString() !== req.user.id) {
         throw new ForbiddenError('В доступе отказано');
       }
       return Movie.findByIdAndRemove(filmId).then(() => res.status(200).send({ message: 'Кино удалено' }));

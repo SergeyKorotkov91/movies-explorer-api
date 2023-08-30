@@ -9,7 +9,8 @@ const cors = require('cors');
 const error = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
-const { PORT, MONGODB_URI } = require('./utils/config');
+const { port, mongodbURI } = require('./utils/config');
+
 
 const app = express();
 app.use(cors({
@@ -30,8 +31,8 @@ app.use(errorLogger);
 app.use(errors());
 app.use(error);
 
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(mongodbURI, {
   useNewUrlParser: true,
 });
 
-app.listen(PORT);
+app.listen(port);

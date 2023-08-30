@@ -15,8 +15,8 @@ const { port, mongodbURI } = require('./utils/config');
 const app = express();
 app.use(cors({
     origin: [
-      'https://kanc1er.nomoreparties.co',
-      'http://kanc1er.nomoreparties.co',
+      'https://kanc1er-diploma.nomoredomainsicu.ru',
+      'http://kanc1er-diploma.nomoredomainsicu.ru',
       'http://localhost:3000',
     ],
     credentials: true,

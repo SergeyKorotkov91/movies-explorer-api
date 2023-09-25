@@ -18,6 +18,7 @@ app.use(cors({
       'https://kanc1er-diploma.nomoredomainsicu.ru',
       'http://kanc1er-diploma.nomoredomainsicu.ru',
       'http://localhost:3000',
+      'https://localhost:3000',
     ],
     credentials: true,
     maxAge: 30,

@@ -56,6 +56,7 @@ const login = (req, res, next) => {
             maxAge: 3600000 * 24 * 7,
             httpOnly: true,
             sameSite: none,
+            secure: true
           });
           return res.send({ _id: user._id });
         })
@@ -75,7 +76,11 @@ const getUser = (req, res, next) => {
 
 const logout = (req, res, next) => {
   try {
-    res.clearCookie('jwt');
+    res.clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
     return res.send({ message: 'Выход выполнен' });
   } catch (err) {
     return next(err);
